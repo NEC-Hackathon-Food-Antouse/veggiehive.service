@@ -1,0 +1,11 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /nec
+spring.data.mongodb.database: nec
+spring.data.mongodb.host: 52.77.243.25
+spring.data.mongodb.port: 27017
+spring:
+  devtools:
+    restart:
+      enabled: true

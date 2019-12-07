@@ -1,0 +1,58 @@
+package com.nec.foodstorage.models;
+
+import java.time.LocalDateTime;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.nec.foodstorage.serialize.LocalDateTimeDeserializer;
+import com.nec.foodstorage.serialize.LocalDateTimeSerializer;
+
+@Document(collection = "slotEnvEvent")
+public class SlotEnvEvent {
+	@Id
+	String id;
+	protected String slotId;
+	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
+	@JsonSerialize(using = LocalDateTimeSerializer.class)
+	protected LocalDateTime creationTimestamp;
+	protected EnvironmentData environmentData;
+
+	public SlotEnvEvent() {
+
+	}
+
+	public SlotEnvEvent(String slotId, LocalDateTime creationTimestamp, EnvironmentData environmentData) {
+		super();
+		this.slotId = slotId;
+		this.creationTimestamp = creationTimestamp;
+		this.environmentData = environmentData;
+	}
+
+	public String getSlotId() {
+		return slotId;
+	}
+
+	public void setSlotId(String slotId) {
+		this.slotId = slotId;
+	}
+
+	public LocalDateTime getCreationTimestamp() {
+		return creationTimestamp;
+	}
+
+	public void setCreationTimestamp(LocalDateTime creationTimestamp) {
+		this.creationTimestamp = creationTimestamp;
+	}
+
+	public EnvironmentData getEnvironmentData() {
+		return environmentData;
+	}
+
+	public void setEnvironmentData(EnvironmentData environmentData) {
+		this.environmentData = environmentData;
+	}
+
+}
